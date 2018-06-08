@@ -1,0 +1,33 @@
+server:
+  port: 9091
+  tomcat.min-spare-threads: 60
+spring:
+  redis:
+    host: 172.27.0.8
+    port: 6379
+    password: CDWhz20171201
+    database: 0
+security:
+  oauth2.client.client-id: OAUTH2_CLIENT_TEST
+  oauth2.client.client-secret: ADMIN_TEST
+datasource:
+  enableSlave:
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+    url: jdbc:mysql://172.27.0.12:3306/whz_test?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useSSL=false
+    username: whz_test
+    password: gatYaDRg86vj16/QWC6J3RqWPe1UYOUoSlFXCu7HoOjcYH7lgBI9md/W1kiP2CjlctuDeQ0+uW0RaIDBYyeS8A==
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxActive: 15
+    initialSize: 5
+    minIdle: 5
+    maxWait: 10000
+    timeBetweenEvictionRunsMillis: 45000
+    minEvictableIdleTimeMillis: 30000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    validationQuery: select 'x'
+    poolPreparedStatements: true
+    connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKCXrinFy8QGU3sfnQYyUVnwNPUJaGUPdjlo4EttUjxk2ZIP9/5j18T4xgYkGQHbP/DKRkffVphcacUSFLJ1SIUCAwEAAQ==

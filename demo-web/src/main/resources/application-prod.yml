@@ -1,0 +1,51 @@
+server:
+  port: 80
+  tomcat.min-spare-threads: 1024
+spring:
+  redis:
+    host: 172.27.0.8
+    port: 6379
+    password: CDWhz20171201
+    database: 0
+security:
+  oauth2.client.client-id: OAUTH2_CLIENT_PROD
+  oauth2.client.client-secret: ADMIN_PROD
+datasource:
+  enableSlave:
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+    url: jdbc:mysql://172.27.0.12:3306/whz?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useSSL=false
+    username: whz_zs
+    password: CAfOmCgOBNnS4piXEWfSUnHzOjsgVHUsWfpKs+eVMRGMJg/TTZ0v3Jh4UiGG8vNkNyRkygOGePsLOacYwaURuw==
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxActive: 25
+    initialSize: 10
+    minIdle: 10
+    maxWait: 15000
+    timeBetweenEvictionRunsMillis: 45000
+    minEvictableIdleTimeMillis: 30000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    validationQuery: select 'x'
+    poolPreparedStatements: true
+    connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIbJOV5w/2QaxLJA+dXt895zaGDM4AQUSYVqy+vOgfVn5vappSLDh9mgDW0r37o9v0U2GEXoIRlDt0C5rfd5PMCAwEAAQ==
+  slave1:
+    url: jdbc:mysql://mysql:3306/rkw_prod?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useSSL=false
+    username: rkwtest
+    password: aKN59VLlIJ2yiZV4yTN4aDTrQyiUdrt8DkRxc7sCt/4jklQXyhM2PTA2Qktr/VIsbliVeO/CvYwFmNGqYl1G5w==
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxActive: 15
+    initialSize: 15
+    minIdle: 15
+    maxWait: 15000
+    timeBetweenEvictionRunsMillis: 45000
+    minEvictableIdleTimeMillis: 30000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    validationQuery: select 'x'
+    poolPreparedStatements: true
+    connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKIbJOV5w/2QaxLJA+dXt895zaGDM4AQUSYVqy+vOgfVn5vappSLDh9mgDW0r37o9v0U2GEXoIRlDt0C5rfd5PMCAwEAAQ==

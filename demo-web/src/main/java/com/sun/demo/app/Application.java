@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Created by Wayne on 2018/06/08.
  */
-@ComponentScan(basePackages = {"com.sun.demo.controller"})
+@ComponentScan(basePackages = {"com.chinapopin.framework.datasource","com.sun.demo.controller"})
 @EnableAutoConfiguration
 @EnableConfigurationProperties
 public class Application extends SpringBootServletInitializer {

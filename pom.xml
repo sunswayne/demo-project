@@ -14,6 +14,7 @@
         <module>demo-oauth2</module>
         <module>demo-redis</module>
         <module>demo-web</module>
+        <module>demo-datasource</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -33,6 +34,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -45,6 +52,85 @@
             <version>1.0.2</version>
         </dependency>
     </dependencies>
+
+    <!--多环境配置-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+                <project.popin.framework.version>0.0.1-SNAPSHOT</project.popin.framework.version>
+                <project.cdwhz.version>0.0.1-SNAPSHOT</project.cdwhz.version>
+                <virtual.directory>cdwhz-dev</virtual.directory>
+                <log4jLevel>DEBUG</log4jLevel>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>dev</id>
+                    <url>https://chinapopin.com/nexus/repository/web-snapshot/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profileActive>prod</profileActive>
+                <project.popin.framework.version>0.0.1-RELEASE</project.popin.framework.version>
+                <project.cdwhz.version>0.0.1-RELEASE</project.cdwhz.version>
+                <virtual.directory>cdwhz</virtual.directory>
+                <log4jLevel>INFO</log4jLevel>
+            </properties>
+            <repositories>
+                <repository>
+                    <id>prod</id>
+                    <url>https://chinapopin.com/nexus/repository/web-release/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+                <project.popin.framework.version>0.0.1-TEST-RELEASE</project.popin.framework.version>
+                <project.cdwhz.version>0.0.1-TEST-RELEASE</project.cdwhz.version>
+                <virtual.directory>cdwhz-test</virtual.directory>
+                <log4jLevel>INFO</log4jLevel>
+            </properties>
+            <repositories>
+                <repository>
+                    <id>test</id>
+                    <url>https://chinapopin.com/nexus/repository/web-release/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>

@@ -1,0 +1,43 @@
+server:
+  port: 55726
+spring:
+  redis:
+    #host: 100.98.100.242
+    #port: 6379
+    cluster:
+      nodes: 100.98.100.242:7000,100.98.100.242:7001,100.98.100.242:7002,100.98.100.242:7003,100.98.100.242:7004,100.98.100.242:7005,100.98.100.242:7006,100.98.100.242:7007
+    password:
+    database: 0
+security:
+  oauth2.client.client-id: OAUTH2_CLIENT_DEV
+  oauth2.client.client-secret: ADMIN_DEV
+  oauth2.resource.filter-order: 10
+datasource:
+  enableSlave:
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+    url: jdbc:mysql://100.98.100.242:3306/whz_dev?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useSSL=false
+#    url: jdbc:mysql://localhost:3306/whz_dev?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&useSSL=false
+    username: whz
+    password: SU3sU9J33f/LGtp5LtWQ6ohI0LKHqqUqlTxo1IFwqGaizpw7IWwuNHYwy2LfClOabZEyWkqwtPYteuExvkD1Ug==
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxActive: 10
+    initialSize: 2
+    minIdle: 2
+    maxWait: 15000
+    timeBetweenEvictionRunsMillis: 45000
+    minEvictableIdleTimeMillis: 30000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    validationQuery: select 'x'
+    poolPreparedStatements: true
+    connectionProperties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKZMnm7LORdcKirKezChHHQqpSNqhRqMyW0qF483mddd5NdOri75LYE0XIzo2yA4WPv4LUP99FjobmRhl/F9zZUCAwEAAQ==
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO

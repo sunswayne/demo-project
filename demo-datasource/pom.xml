@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>demo-service</artifactId>
+    <artifactId>demo-datasource</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.sun.demo</groupId>
-            <artifactId>demo-dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
-    </dependencies>
 </project>
