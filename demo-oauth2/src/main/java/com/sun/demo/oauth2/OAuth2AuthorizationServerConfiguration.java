@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -51,7 +50,6 @@ public class OAuth2AuthorizationServerConfiguration extends AuthorizationServerC
     @Bean
     public JdbcClientDetailsService jdbcClientDetailsService() {
         JdbcClientDetailsService jdbcClientDetailsService = new JdbcClientDetailsService(this.dataSource);
-        jdbcClientDetailsService.setPasswordEncoder(new StandardPasswordEncoder());//SHA-256位
         return jdbcClientDetailsService;
     }
 
@@ -65,7 +63,6 @@ public class OAuth2AuthorizationServerConfiguration extends AuthorizationServerC
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
         oauthServer.allowFormAuthenticationForClients();
     }
 

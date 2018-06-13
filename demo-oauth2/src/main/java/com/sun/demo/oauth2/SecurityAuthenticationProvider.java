@@ -1,6 +1,5 @@
 package com.sun.demo.oauth2;
 
-import com.sun.demo.bean.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,35 +9,35 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+import java.util.Collection;
 
 @Component
 public class SecurityAuthenticationProvider implements AuthenticationProvider {
     private Logger LOGGER = LoggerFactory.getLogger(SecurityAuthenticationProvider.class);
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private SecurityUserDetailsService userService;
 
-//    @Resource
-//    SystemUserDao systemUserDao;
-
+    @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
-        User user = null;
+
+        UserDetails userDetails = null;
         try {
-            List<GrantedAuthority> authority = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
-            UserDetails userDetails = new OAuth2UserDetails(user, authority);
-            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
-            return token;
+            userDetails = userService.loadUserByUsername(username);
+        } catch (Exception e) {
+            throw new BadCredentialsException(e.getMessage());
+        }
+
+        try {
+            Collection<? extends GrantedAuthority> authorities = ((OAuth2UserDetails)userDetails).getAuthorities();
+            return new UsernamePasswordAuthenticationToken(((OAuth2UserDetails)userDetails), password, authorities);
         } catch (UsernameNotFoundException e) {
             throw new UsernameNotFoundException(e.getMessage());
         } catch (BadCredentialsException e) {
@@ -50,10 +49,5 @@ public class SecurityAuthenticationProvider implements AuthenticationProvider {
         return true;
     }
 
-//    private User getUser(String username) {
-//        User sysUser = new User();
-//        sysUser.setUsername(username);
-//        return systemUserDao.selectOne(sysUser);
-//    }
 }
 

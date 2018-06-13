@@ -11,15 +11,21 @@ import javax.annotation.Resource;
 
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/user")
 public class DemoController {
 
     @Resource
     IUserService userService;
 
-    @RequestMapping("/user")
-    public User hello(@RequestParam("id") String id) {
+    @RequestMapping("/get-user-by-id")
+    public User getUserById(@RequestParam("id") String id) {
         User user = userService.getUserById(id);
         return user;
     }
 
+    @RequestMapping("/get-user-by-name")
+    public User getUserByUserName(@RequestParam("username") String username) {
+        User user = userService.getUserByUserName(username);
+        return user;
+    }
 }

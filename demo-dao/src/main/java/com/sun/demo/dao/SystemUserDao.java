@@ -1,9 +1,17 @@
 package com.sun.demo.dao;
 
-import com.chinapopin.framework.datasource.utils.MyMapper;
+import com.sun.demo.bean.ResultMessage;
 import com.sun.demo.bean.User;
-import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
-public interface SystemUserDao extends MyMapper<User> {
+@Mapper
+public interface SystemUserDao {
 
+    @Select("SELECT * FROM sys_user WHERE u_id = #{id}")
+    User findById(@Param("id") String id);
+
+    @Select("SELECT * FROM sys_user WHERE u_id = #{username}")
+    User findByName(String username);
 }

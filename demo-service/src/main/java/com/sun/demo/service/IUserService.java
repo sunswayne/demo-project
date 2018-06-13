@@ -1,5 +1,6 @@
 package com.sun.demo.service;
 
+import com.sun.demo.bean.ResultMessage;
 import com.sun.demo.bean.User;
 
 /**
@@ -8,4 +9,6 @@ import com.sun.demo.bean.User;
 public interface IUserService {
 
     User getUserById(String id);
+
+    User getUserByUserName(String username);
 }
