@@ -44,7 +44,7 @@ public class OAuth2ResourceServerConfiguration extends ResourceServerConfigurerA
             urlRegistry.antMatchers(_resIgnoreConfig).permitAll();
         }
         urlRegistry.antMatchers("/oauth2/**").permitAll();
-        urlRegistry.antMatchers("/api/**", "/user/**", "/service/*", "/**/swagger-ui.html").authenticated().and()
+        urlRegistry.antMatchers("/api/**", "/user/**", "/service/*").authenticated().and()
                 .exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
         http.headers().frameOptions().disable();
 

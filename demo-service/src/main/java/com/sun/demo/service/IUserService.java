@@ -1,6 +1,5 @@
 package com.sun.demo.service;
 
-import com.sun.demo.bean.ResultMessage;
 import com.sun.demo.bean.User;
 
 /**

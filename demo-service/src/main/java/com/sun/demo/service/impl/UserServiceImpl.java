@@ -1,6 +1,5 @@
 package com.sun.demo.service.impl;
 
-import com.sun.demo.bean.ResultMessage;
 import com.sun.demo.bean.User;
 import com.sun.demo.dao.SystemUserDao;
 import com.sun.demo.service.IUserService;

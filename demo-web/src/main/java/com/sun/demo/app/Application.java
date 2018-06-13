@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Created by Wayne on 2018/06/08.
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.sun.**.dao")
 @EnableAutoConfiguration
 @EnableConfigurationProperties
+@EnableSwagger2
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

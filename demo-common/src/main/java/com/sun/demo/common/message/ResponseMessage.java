@@ -1,4 +1,4 @@
-package com.sun.demo.bean;
+package com.sun.demo.common.message;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonInclude;

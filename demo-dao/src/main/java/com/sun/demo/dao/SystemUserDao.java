@@ -1,6 +1,5 @@
 package com.sun.demo.dao;
 
-import com.sun.demo.bean.ResultMessage;
 import com.sun.demo.bean.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
