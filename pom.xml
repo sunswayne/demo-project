@@ -15,6 +15,7 @@
         <module>demo-web</module>
         <module>demo-datasource</module>
         <module>demo-common</module>
+        <module>demo-redis</module>
     </modules>
     <packaging>pom</packaging>
 
