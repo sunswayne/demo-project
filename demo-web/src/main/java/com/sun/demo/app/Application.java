@@ -15,7 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan("com.sun.**.dao")
 @EnableAutoConfiguration
 @EnableConfigurationProperties
-@EnableSwagger2
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

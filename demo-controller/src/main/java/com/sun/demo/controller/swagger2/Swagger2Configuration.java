@@ -11,12 +11,14 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.Resource;
 
 /**
  * Swagger注入及参数配置
  */
+@EnableSwagger2
 @Configuration
 @Profile(value={"test","dev"})
 @PropertySource(ignoreResourceNotFound = true, value = {"classpath:api.properties"}, encoding = "UTF-8")
@@ -35,9 +37,6 @@ public class Swagger2Configuration {
     String contact_email;
     @Value("${springfox.documentation.swagger.v2.contact.url}")
     String contact_url;
-
-    @Resource
-    SwaggerScanConfig swaggerScanConfig;
 
     @Bean
     public Docket createRestApi() {

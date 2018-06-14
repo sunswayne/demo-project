@@ -5,22 +5,22 @@
     <parent>
         <artifactId>demo-project</artifactId>
         <groupId>com.sun.demo</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <artifactId>demo-controller</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.sun.demo</groupId>
             <artifactId>demo-bean</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.sun.demo</groupId>
             <artifactId>demo-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

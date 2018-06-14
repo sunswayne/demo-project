@@ -5,17 +5,17 @@
     <parent>
         <artifactId>demo-project</artifactId>
         <groupId>com.sun.demo</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <artifactId>demo-service</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.sun.demo</groupId>
             <artifactId>demo-dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>
